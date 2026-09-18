@@ -104,7 +104,46 @@ respond?" field. The compact variant fits the field's length limit; the full one
 
 ---
 
-## Any other agent
+## Other agents
+
+Most agents read `AGENTS.md`. Download the file once, then copy it to whichever paths apply:
+
+```bash
+curl -o /tmp/token-poverty.md \
+  https://raw.githubusercontent.com/juanbermudez/token-poverty/main/prompts/agents.md
+```
+
+### Agents that read `AGENTS.md` directly
+
+| Agent | Global path | Project path |
+| --- | --- | --- |
+| OpenCode | `~/.config/opencode/AGENTS.md` | `./AGENTS.md` |
+| Amp | `~/.config/amp/AGENTS.md` | `./AGENTS.md` |
+| Pi | `~/.pi/agent/AGENTS.md` | `./AGENTS.md` |
+| Crush | `~/.config/crush/CRUSH.md` | `./CRUSH.md` or `./AGENTS.md` |
+| Goose | `~/.config/goose/.goosehints` | `./.goosehints` or `./AGENTS.md` |
+| Cursor | — (User Rules are UI-only) | `./AGENTS.md` |
+| Gemini CLI | `~/.gemini/GEMINI.md` | `./GEMINI.md` |
+
+OpenCode also accepts arbitrary paths, globs, and URLs via `"instructions": [...]` in
+`opencode.json`. Gemini CLI can be pointed at `AGENTS.md` instead with the `context.fileName`
+setting.
+
+### Agents with their own rules format
+
+| Agent | Path | Note |
+| --- | --- | --- |
+| Cline | `.clinerules/` (project), `~/Documents/Cline/Rules` (global) | Also falls back to `AGENTS.md` |
+| Roo Code | `~/.roo/rules/`, `.roo/rules/` | Also reads `AGENTS.md` |
+| Continue.dev | `.continue/rules/*.md` | Needs frontmatter: `name`, `alwaysApply: true` |
+| GitHub Copilot | `.github/copilot-instructions.md` | Repo-scoped; personal instructions are UI-only |
+| Windsurf | `.devin/rules/*.md` | `.windsurf/rules/` is legacy but still works. Global rules file caps at 6,000 characters — use `prompts/agents-compact.md` |
+| Aider | `~/.aider.conf.yml` → `read: CONVENTIONS.md` | Points at a file rather than containing the text |
+| Hermes Agent | `~/.hermes/config.yaml` → `personalities:` | YAML, not markdown. Confirm the key shape against current docs before relying on it |
+
+---
+
+## Prompt variants
 
 Paste one of these into whatever system-prompt or instructions field the harness exposes.
 
