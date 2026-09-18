@@ -12,7 +12,24 @@ assumed, or something claimed authority it could not verify.
 
 ## Claude Code
 
-Install the output style:
+### As a plugin (recommended)
+
+```
+/plugin marketplace add juanbermudez/token-poverty
+/plugin install token-poverty@token-poverty
+```
+
+The style activates on install — no `/output-style` step. The plugin also adds two commands:
+
+| Command | Does |
+| --- | --- |
+| `/token-poverty` | Installs the style for whatever agent you are running, including non-Claude ones |
+| `/i-am-token-rich` | Removes it and restores whatever configuration was there before |
+
+> While the plugin is enabled it overrides your `outputStyle` setting. Disabling or
+> uninstalling the plugin gives your previous style back.
+
+### Manually
 
 ```bash
 mkdir -p ~/.claude/output-styles
@@ -105,6 +122,21 @@ respond?" field. The compact variant fits the field's length limit; the full one
 ---
 
 ## Other agents
+
+### Let the installer do it
+
+If you have the plugin installed in Claude Code, `/token-poverty` installs the style for any
+of the harnesses below — it detects which ones are present, shows you every path it intends
+to touch, and waits for your approval before writing. It appends inside markers rather than
+overwriting, records what it changed, and `/i-am-token-rich` reverses it exactly.
+
+### Gemini CLI, as an extension
+
+```bash
+gemini extensions install https://github.com/juanbermudez/token-poverty
+```
+
+### By hand
 
 Most agents read `AGENTS.md`. Download the file once, then copy it to whichever paths apply:
 

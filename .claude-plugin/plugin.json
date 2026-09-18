@@ -1,0 +1,19 @@
+{
+  "name": "token-poverty",
+  "version": "1.0.0",
+  "description": "An output style that makes the agent silent by default. It stops narrating, and speaks only when you need to act, decide, or authorize something.",
+  "author": {
+    "name": "Juan Bermudez",
+    "url": "https://github.com/juanbermudez"
+  },
+  "homepage": "https://github.com/juanbermudez/token-poverty",
+  "repository": "https://github.com/juanbermudez/token-poverty",
+  "license": "MIT",
+  "keywords": [
+    "output-style",
+    "terse",
+    "verbosity",
+    "agents",
+    "coordination"
+  ]
+}
