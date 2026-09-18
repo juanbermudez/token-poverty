@@ -25,13 +25,13 @@ The style activates on install. Two commands come with it:
 - `/i-am-token-poor` — installs the style for any agent on your machine, not just Claude
 - `/i-am-token-rich` — removes it and restores what was there before
 
+**Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
+
 **Gemini CLI**
 
 ```bash
 gemini extensions install https://github.com/juanbermudez/token-rich-token-poor
 ```
-
-**Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
 
 ## ChatGPT
 
