@@ -19,7 +19,7 @@ assumed, or something claimed authority it could not verify.
 
 The style activates on install. Two commands come with it:
 
-- `/token-poverty` — installs the style for any agent on your machine, not just Claude
+- `/i-am-token-poor` — installs the style for any agent on your machine, not just Claude
 - `/i-am-token-rich` — removes it and restores what was there before
 
 **Gemini CLI**
@@ -28,7 +28,7 @@ The style activates on install. Two commands come with it:
 gemini extensions install https://github.com/juanbermudez/token-poverty
 ```
 
-**Everything else** — run `/token-poverty` and it handles the rest, or install by hand below.
+**Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
 
 ## By hand
 

@@ -1,6 +1,6 @@
 ---
 name: token-poverty
-description: Installs or removes the Token Poverty output style for whichever coding agent is running — Claude Code, Codex, Cursor, Cline, Roo, Continue, Windsurf, Copilot, Gemini CLI, Goose, OpenCode, Amp, Crush, Pi, Aider or Hermes. Use when the user asks to install, set up, add, remove, uninstall or restore Token Poverty, or says "I am token rich".
+description: Installs or removes the Token Poverty output style for whichever coding agent is running — Claude Code, Codex, Cursor, Cline, Roo, Continue, Windsurf, Copilot, Gemini CLI, Goose, OpenCode, Amp, Crush, Pi, Aider or Hermes. Use when the user asks to install, set up, add, remove, uninstall or restore Token Poverty, or says "I am token poor" or "I am token rich".
 ---
 
 # Token Poverty installer
@@ -79,6 +79,9 @@ and the settings files present. Check for `~/.claude/`, `~/.codex/`, `~/.gemini/
 If more than one is present, ask which to install for, and offer "all of them" as an option.
 
 ## Step 2 — install
+
+Triggered by "/i-am-token-poor", or any request to install, set up, or add Token Poverty.
+
 
 The style text is in this repository: `output-styles/token-poverty.md` (with frontmatter,
 Claude Code only) and `prompts/agents.md` (plain markdown, everyone else). Use
