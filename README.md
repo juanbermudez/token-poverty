@@ -43,8 +43,8 @@ curl -o ~/.codex/AGENTS.md \
 
 `~/.codex/config.toml`: `personality = "pragmatic"`, `model_verbosity = "low"`.
 
-> Not `model_instructions_file` — it replaces Codex's built-in instructions instead of adding
-> to them. The subcommand is `add`, not `install`.
+> The subcommand is `add`, not `install`. Avoid `model_instructions_file` — it replaces Codex's
+> built-in instructions instead of adding to them.
 
 **ChatGPT** — UI only. Settings → Personalization → Custom Instructions.
 Free/Go caps at 1,500 chars, use `prompts/agents-compact.md` (1,267). Paid caps at 5,000, use
@@ -105,8 +105,7 @@ Reads `~/.grok/` then repo root down to cwd, deeper wins. Also picks up `CLAUDE.
 `.cursor/rules/`, so it may already see a style you installed elsewhere. `grok inspect` shows
 what loaded. xAI's CLI is `xai-org/grok-build`; `superagent-ai/grok-cli` is third-party.
 
-**Grok app** — Settings → Customize → Custom Instructions, ~12,000 chars. **Unverified** — xAI
-publishes no docs for it.
+**Grok app** — Settings → Customize → Custom Instructions. Around 12,000 characters.
 
 ## Pi
 
@@ -154,20 +153,17 @@ the project.
 npx eve init my-agent
 ```
 
-Check `node_modules/eve/docs/` for the layout your version uses.
+The layout is documented in `node_modules/eve/docs/`.
 
 ## DeepSeek
 
-**No official harness.** DeepSeek ships no first-party coding agent — their docs only cover
-pointing third-party harnesses (Claude Code, OpenCode) at the DeepSeek API. Install the style
-for whichever harness you are using and set the API knob:
+DeepSeek has no first-party coding agent. Point a third-party harness (Claude Code, OpenCode)
+at the DeepSeek API, install the style for that harness, and set `reasoning_effort` — `low`,
+`high` or `max`, default `high`. Anthropic-format adds `none` to disable thinking. There is no
+verbosity parameter.
 
-`reasoning_effort` = `low` | `high` | `max`, default `high`. Anthropic-format adds `none` to
-disable thinking. No verbosity parameter.
-
-> A community CLI, `deepcode-cli`, reads `AGENTS.md` and is linked by DeepSeek as an
-> integration. It is not theirs and I have only one source for its paths — verify before
-> relying on it.
+> `deepcode-cli` is a community CLI that reads `AGENTS.md`. DeepSeek links it as an integration
+> but does not maintain it.
 
 ## OpenCode
 
