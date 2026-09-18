@@ -61,6 +61,57 @@ Or set it permanently in `~/.claude/settings.json`:
 
 Project-scoped instead of global: put the file in `.claude/output-styles/` in the repo.
 
+### Codex CLI
+
+Codex has no single equivalent to Claude Code's output styles, but it has the pieces. Use
+`prompts/agents.md` as the file, and reach for the additive surface rather than the
+replacing one.
+
+**Recommended — additive.** Drop the file at `~/.codex/AGENTS.md` (global) or `AGENTS.md` at
+your repo root. Codex discovers these automatically, concatenating from the git root down to
+the working directory, so a nearer file wins over a further one.
+
+```bash
+curl -o ~/.codex/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-poverty/main/prompts/agents.md
+```
+
+**Alternative — replacing.** `~/.codex/config.toml` has a `model_instructions_file` key that
+is the closest structural analogue to an output style:
+
+```toml
+model_instructions_file = "token-poverty.md"
+```
+
+> **Read this before using that key.** `model_instructions_file` *replaces* Codex's built-in
+> instructions rather than adding to them. Point it at a bare style file and you also discard
+> the operating instructions that make Codex use its tools correctly. Only use it if your file
+> is a complete agent prompt. For a style layer, `AGENTS.md` or `developer_instructions` is
+> the correct surface.
+
+**Pair it with the parameters.** The style governs *when* the agent speaks; these govern how
+much it elaborates. Both, in `~/.codex/config.toml`:
+
+```toml
+personality = "pragmatic"      # none | friendly | pragmatic
+model_verbosity = "low"        # low | medium | high
+model_reasoning_effort = "high"
+```
+
+`personality` is a fixed enum — you cannot ship a custom one, which is the main thing Codex
+lacks and Claude Code has. `/personality` overrides it for one session without writing config.
+
+### OpenAI API
+
+No durable output-style object. Style lives in `instructions` on the Agent (Agents SDK) or the
+request, and two parameters do the verbosity work:
+
+| Surface | Parameter |
+| --- | --- |
+| Responses API | `text: { verbosity: "low" \| "medium" \| "high" }` |
+| Responses API | `reasoning: { effort: ... }` |
+| Chat Completions | flat `reasoning_effort` (no verbosity — Responses-only) |
+
 ### Any agent — as a prompt
 
 The `prompts/` directory has four variants. Paste into a system prompt, an `AGENTS.md`, or
@@ -81,9 +132,10 @@ the prose go, every rule and qualifier stays.
 **Too quiet?** Add an eighth condition rather than loosening the default. The seven conditions
 are the knob; the silence is not.
 
-**Still narrates?** On Claude, pair the style with a lower `effort` setting. Effort controls
-how much the model elaborates and how many tool calls it makes; the style controls when it
-addresses you. They are different levers and the prompt cannot substitute for the parameter.
+**Still narrates?** Pair the style with the verbosity parameter your harness exposes — `effort`
+on Claude, `model_verbosity` on Codex. These control how much the model elaborates; the style
+controls when it addresses you at all. They are different levers, and a prompt cannot
+substitute for the parameter.
 
 **Want it for a subagent, not the main thread?** Use `prompts/*-compact.md` in the subagent's
 system prompt. Subagents report to the orchestrator, not the user, so rule 1 rarely fires and
