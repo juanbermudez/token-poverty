@@ -97,6 +97,20 @@ Per project `./AGENTS.md`; `AGENTS.override.md` replaces both. `/reload` to appl
 
 > Not `SYSTEM.md` at that path — it replaces the system prompt wholesale.
 
+## Vercel
+
+**eve** ([vercel/eve](https://github.com/vercel/eve)) is a framework for building durable
+agents, not a CLI you install a style into. An eve agent is a directory on disk where
+instructions, skills and tools are all files — so the style goes in your agent's instructions,
+committed with the project.
+
+```bash
+npx eve init my-agent
+```
+
+> Check `node_modules/eve/docs/` for the exact layout your version uses. The docs ship in the
+> package and match the installed version; anything else goes stale.
+
 ## OpenCode
 
 No local file. In `~/.config/opencode/opencode.json` or `opencode.json`:
