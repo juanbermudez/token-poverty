@@ -104,7 +104,7 @@ Claude Code only) and `prompts/agents.md` (plain markdown, everyone else). Use
 | Crush | `~/.config/crush/CRUSH.md` | Append a marked block. |
 | Pi | `~/.pi/agent/AGENTS.md` | Append a marked block. |
 | Aider | `~/.aider.conf.yml` | Write the style to `~/.token-poverty/CONVENTIONS.md`, then add that path to the `read:` list. Do not replace an existing `read:` value — append to the list. |
-| Hermes | `~/.hermes/config.yaml` | Add a `personalities:` entry. **Verify the key shape against current Hermes docs first** — this schema is not confirmed. If you cannot confirm it, tell the user and skip this target rather than guessing. |
+| Hermes | `~/.hermes/SOUL.md` | Append a marked block. This is the always-on surface. To make it switchable instead, add a `token-poor` entry under `agent.personalities` in `~/.hermes/config.yaml` — never under `agent.system_prompt`, which applies only when no personality is selected. |
 
 Create parent directories as needed. After writing, report each path and what you did to it.
 

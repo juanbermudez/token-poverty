@@ -33,6 +33,74 @@ The style activates on install. Two commands come with it:
 gemini extensions install https://github.com/juanbermudez/token-rich-token-poor
 ```
 
+## Codex
+
+The repo is also a portable plugin, so Codex installs it the same way Claude Code does:
+
+```bash
+codex plugin marketplace add juanbermudez/token-rich-token-poor
+codex plugin add token-rich-token-poor@token-rich-token-poor
+```
+
+> The subcommand is `add`, not `install`. This syntax is not on the docs page yet — run
+> `codex plugin --help` if it does not work for you.
+
+**The plugin does not make the style always-on.** Codex plugins and skills cannot supply
+standing instructions, so install the style file too:
+
+```bash
+mkdir -p ~/.codex
+curl -o ~/.codex/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
+
+Then set the built-in controls in `~/.codex/config.toml`:
+
+```toml
+personality = "pragmatic"
+model_verbosity = "low"
+```
+
+## Hermes
+
+Hermes has two surfaces. `SOUL.md` is always-on and is the one you want:
+
+```bash
+mkdir -p ~/.hermes
+curl -o ~/.hermes/SOUL.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
+
+To make it a switchable personality instead, add it to `~/.hermes/config.yaml` and turn it on
+per session with `/personality token-poor`:
+
+```yaml
+agent:
+  personalities:
+    token-poor: >
+      (paste the contents of prompts/agents-compact.md here)
+```
+
+`agent.system_prompt` applies only when no personality is selected, so do not put the style
+there.
+
+## Pi
+
+Always-on, globally:
+
+```bash
+mkdir -p ~/.pi/agent
+curl -o ~/.pi/agent/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
+
+Per project, use `./AGENTS.md`. `AGENTS.override.md` replaces both for that directory. Run
+`/reload` to pick up changes without restarting.
+
+Pi also has a package installer, `pi install https://github.com/juanbermudez/token-rich-token-poor`,
+which pulls in the skill and commands — but whether a package can inject always-on context is
+undocumented, so install the file above regardless.
+
 ## ChatGPT
 
 There is no file or API surface — custom instructions are UI-entered only, and the desktop app
