@@ -132,6 +132,65 @@ work. No published character limit.
 and tone* to **Efficient**, then turn down *Headers & Lists* and *Emojis* under
 *Characteristics*. Presets work alongside custom instructions rather than overriding them.
 
+## Grok
+
+**Grok Build** (xAI's CLI, `curl -fsSL https://x.ai/cli/install.sh | bash`) reads instruction
+files from `~/.grok/` globally, then every directory from repo root down to your working
+directory, deeper winning. No size cap.
+
+```bash
+mkdir -p ~/.grok
+curl -o ~/.grok/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
+
+Per directory it also picks up `CLAUDE.md` and `*.md` under `.grok/rules/`, `.claude/rules/`
+and `.cursor/rules/`. Confirm what it loaded with `grok inspect`.
+
+> `superagent-ai/grok-cli` is a third-party project, not xAI's. The official one is
+> `xai-org/grok-build`.
+
+**The Grok app** (grok.com, desktop, and Grok in X) has a custom instructions panel, reportedly
+at Settings → Customize → Custom Instructions with a ~12,000 character limit. **Verify this
+yourself** — xAI publishes no documentation for it and every source I could find was
+third-party. Paste `prompts/agents.md` there.
+
+## Prime Agent
+
+[Prime Intellect's harness](https://github.com/PrimeIntellect-ai/prime-agent). Use the
+append-only system prompt file, which adds to the built-in prompt instead of replacing it:
+
+```bash
+mkdir -p ~/.prime/agent
+curl -o ~/.prime/agent/APPEND_SYSTEM.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
+
+> There is also a `SYSTEM.md` at the same path. That one **replaces** the system prompt
+> wholesale — do not use it for a style layer.
+
+Context files work too: `~/.prime/agent/AGENTS.md` globally, or `AGENTS.md` walking up from
+your working directory. `--no-context-files` disables them.
+
+## OpenCode
+
+OpenCode can fetch the style straight from this repo, no local file. In
+`~/.config/opencode/opencode.json` (global) or `opencode.json` at your repo root:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md"
+  ]
+}
+```
+
+Remote instructions are fetched with a 5 second timeout.
+
+> The v2 docs say V2 does not currently resolve files, globs, or URLs in `instructions`. If you
+> are on v2, drop the file at `~/.config/opencode/AGENTS.md` instead.
+
 ## By hand
 
 Download the file, then copy it where your agent reads it.

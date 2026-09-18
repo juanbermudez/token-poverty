@@ -73,8 +73,9 @@ at all — those two cases restore differently.
 
 Do not ask the user which agent they are running unless you genuinely cannot tell. Infer it
 from your own environment: the tools you have, the config directories that exist on disk,
-and the settings files present. Check for `~/.claude/`, `~/.codex/`, `~/.gemini/`,
-`~/.config/goose/`, `~/.config/opencode/`, `~/.cursor/`, `~/.roo/`, `~/.pi/`, `~/.hermes/`.
+and the settings files present. Check for `~/.claude/`, `~/.codex/`, `~/.gemini/`, `~/.grok/`,
+`~/.prime/agent/`, `~/.config/goose/`, `~/.config/opencode/`, `~/.cursor/`, `~/.roo/`,
+`~/.pi/`, `~/.hermes/`.
 
 If more than one is present, ask which to install for, and offer "all of them" as an option.
 
@@ -98,8 +99,10 @@ Claude Code only) and `prompts/agents.md` (plain markdown, everyone else). Use
 | Copilot | `.github/copilot-instructions.md` | Append a marked block. |
 | Windsurf | `~/.codeium/windsurf/memories/global_rules.md` | Append a marked block. **6,000 character cap** — use the compact variant, and check the resulting file size before writing. |
 | Gemini CLI | `~/.gemini/GEMINI.md` | Append a marked block. |
+| Grok Build | `~/.grok/AGENTS.md` | Append a marked block. |
+| Prime Agent | `~/.prime/agent/APPEND_SYSTEM.md` | Append a marked block. Never use `SYSTEM.md` at that path — it replaces the built-in system prompt entirely. |
 | Goose | `~/.config/goose/.goosehints` | Append a marked block. |
-| OpenCode | `~/.config/opencode/AGENTS.md` | Append a marked block. |
+| OpenCode | `~/.config/opencode/AGENTS.md` | Append a marked block. Alternatively add the repo's raw URL to `"instructions"` in `~/.config/opencode/opencode.json` — append to that array, never replace it. |
 | Amp | `~/.config/amp/AGENTS.md` | Append a marked block. |
 | Crush | `~/.config/crush/CRUSH.md` | Append a marked block. |
 | Pi | `~/.pi/agent/AGENTS.md` | Append a marked block. |
