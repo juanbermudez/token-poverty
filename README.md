@@ -99,17 +99,35 @@ Per project `./AGENTS.md`; `AGENTS.override.md` replaces both. `/reload` to appl
 
 ## Vercel
 
-**eve** ([vercel/eve](https://github.com/vercel/eve)) is a framework for building durable
-agents, not a CLI you install a style into. An eve agent is a directory on disk where
-instructions, skills and tools are all files — so the style goes in your agent's instructions,
-committed with the project.
+**fx** ([vercel-labs/fx](https://github.com/vercel-labs/fx)) — a tiny native coding agent.
+Install `curl -fsSL https://fx.sh/setup.sh | bash`, then:
 
 ```bash
-npx eve init my-agent
+curl -o ~/.fx/AGENTS.md $RAW/prompts/agents.md
 ```
 
-> Check `node_modules/eve/docs/` for the exact layout your version uses. The docs ship in the
-> package and match the installed version; anything else goes stale.
+Precedence is direct request → `~/.fx/AGENTS.md` → workspace `AGENTS.md` → nearest
+`AGENTS.md` to whatever a tool touches; narrowest scope wins. No verbosity knob exists.
+`context: false` in `.fx.json` disables instruction loading entirely.
+
+**eve** ([vercel/eve](https://github.com/vercel/eve)) is a framework for building durable
+agents, not a CLI you install a style into. An eve agent is a directory on disk where
+instructions and tools are files, so the style goes in your agent's instructions and ships with
+the project. `npx eve init my-agent`, then check `node_modules/eve/docs/` for the layout your
+version uses.
+
+## DeepSeek
+
+**No official harness.** DeepSeek ships no first-party coding agent — their docs only cover
+pointing third-party harnesses (Claude Code, OpenCode) at the DeepSeek API. Install the style
+for whichever harness you are using and set the API knob:
+
+`reasoning_effort` = `low` | `high` | `max`, default `high`. Anthropic-format adds `none` to
+disable thinking. No verbosity parameter.
+
+> A community CLI, `deepcode-cli`, reads `AGENTS.md` and is linked by DeepSeek as an
+> integration. It is not theirs and I have only one source for its paths — verify before
+> relying on it.
 
 ## OpenCode
 

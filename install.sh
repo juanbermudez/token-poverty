@@ -25,6 +25,7 @@ HARNESSES=(
   "codex|Codex|$HOME/.codex|$HOME/.codex/AGENTS.md|AGENTS.md|append"
   "grok|Grok Build|$HOME/.grok|$HOME/.grok/AGENTS.md|AGENTS.md|append"
   "prime|Prime Agent|$HOME/.prime/agent|$HOME/.prime/agent/APPEND_SYSTEM.md|.prime/agent/APPEND_SYSTEM.md|append"
+  "fx|fx|$HOME/.fx|$HOME/.fx/AGENTS.md|AGENTS.md|append"
   "gemini|Gemini CLI|$HOME/.gemini|$HOME/.gemini/GEMINI.md|GEMINI.md|append"
   "opencode|OpenCode|$HOME/.config/opencode|$HOME/.config/opencode/AGENTS.md|AGENTS.md|append"
   "amp|Amp|$HOME/.config/amp|$HOME/.config/amp/AGENTS.md|AGENTS.md|append"
