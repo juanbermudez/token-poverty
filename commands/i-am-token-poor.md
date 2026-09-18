@@ -4,7 +4,7 @@ description: Install the Token Poverty output style for this agent, without over
 
 Install the Token Poverty output style.
 
-Follow the `token-poverty` skill's install procedure exactly. In particular:
+Follow the `token-rich-token-poor` skill's install procedure exactly. In particular:
 
 - Identify which harness is running before you touch anything.
 - List every path you intend to create, append to, or change, and wait for the user to

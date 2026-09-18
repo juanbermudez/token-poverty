@@ -1,5 +1,5 @@
 ---
-name: token-poverty
+name: token-rich-token-poor
 description: Installs or removes the Token Poverty output style for whichever coding agent is running — Claude Code, Codex, Cursor, Cline, Roo, Continue, Windsurf, Copilot, Gemini CLI, Goose, OpenCode, Amp, Crush, Pi, Aider or Hermes. Use when the user asks to install, set up, add, remove, uninstall or restore Token Poverty, or says "I am token poor" or "I am token rich".
 ---
 
@@ -28,7 +28,7 @@ These are not negotiable and they outrank finishing the task.
 ## The markers
 
 ```
-<!-- BEGIN token-poverty v1.0.0 - https://github.com/juanbermudez/token-poverty -->
+<!-- BEGIN token-poverty v1.0.0 - https://github.com/juanbermudez/token-rich-token-poor -->
 ...style text...
 <!-- END token-poverty -->
 ```

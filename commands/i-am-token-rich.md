@@ -4,7 +4,7 @@ description: Remove the Token Poverty output style and restore whatever configur
 
 Remove Token Poverty and put the user's previous configuration back.
 
-Follow the `token-poverty` skill's removal procedure exactly. In particular:
+Follow the `token-rich-token-poor` skill's removal procedure exactly. In particular:
 
 - Read `~/.token-poverty/manifest.json` and work from what it records.
 - Delete only the text between the skill's markers. Everything else in those files stays.

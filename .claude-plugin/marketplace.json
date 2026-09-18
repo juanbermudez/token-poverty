@@ -1,5 +1,5 @@
 {
-  "name": "token-poverty",
+  "name": "token-rich-token-poor",
   "owner": {
     "name": "Juan Bermudez",
     "url": "https://github.com/juanbermudez"
@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "token-poverty",
+      "name": "token-rich-token-poor",
       "source": "./",
       "description": "An output style that makes the agent silent by default. It stops narrating, and speaks only when you need to act, decide, or authorize something."
     }

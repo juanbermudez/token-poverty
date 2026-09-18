@@ -1,8 +1,11 @@
-# Token Poverty
+# Token Rich / Token Poor
 
-An output style for coding agents. The agent stops narrating — no acknowledgments, no progress
-updates, no summaries of work you just watched it do — and speaks only when you need to act,
-decide, or authorize something.
+An output style for coding agents, and a switch for turning it on and off.
+
+Token poor is the style: the agent stops narrating — no acknowledgments, no progress updates,
+no summaries of work you just watched it do — and speaks only when you need to act, decide, or
+authorize something. Token rich is the off switch, restoring whatever configuration you had
+before.
 
 It breaks silence for seven reasons: you asked, it is blocked, an action needs authorization,
 it found a hazard, the task is done or impossible, the goal turned out to be different than
@@ -13,8 +16,8 @@ assumed, or something claimed authority it could not verify.
 **Claude Code**
 
 ```
-/plugin marketplace add juanbermudez/token-poverty
-/plugin install token-poverty@token-poverty
+/plugin marketplace add juanbermudez/token-rich-token-poor
+/plugin install token-rich-token-poor@token-rich-token-poor
 ```
 
 The style activates on install. Two commands come with it:
@@ -25,7 +28,7 @@ The style activates on install. Two commands come with it:
 **Gemini CLI**
 
 ```bash
-gemini extensions install https://github.com/juanbermudez/token-poverty
+gemini extensions install https://github.com/juanbermudez/token-rich-token-poor
 ```
 
 **Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
@@ -35,7 +38,7 @@ gemini extensions install https://github.com/juanbermudez/token-poverty
 Download the file, then copy it where your agent reads it.
 
 ```bash
-curl -O https://raw.githubusercontent.com/juanbermudez/token-poverty/main/prompts/agents.md
+curl -O https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
 ```
 
 | Agent | Path |
