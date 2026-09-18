@@ -11,6 +11,16 @@ It breaks silence for seven reasons: you asked, it is blocked, an action needs a
 it found a hazard, the task is done or impossible, the goal turned out to be different than
 assumed, or something claimed authority it could not verify.
 
+> **What it costs you: traces.**
+>
+> Terse output means thin session logs. Agent narration is noise when you are working, but it
+> is signal when you are reading a run back — those messages are where the agent's trajectory
+> shows up, and this style removes most of them. If you mine your logs, do trajectory analysis,
+> or are debugging why a run went sideways, turn it off first with `/i-am-token-rich`.
+>
+> Turn it on when the budget is the constraint. That is what it is for — stretching an account
+> through a long stretch of local development.
+
 ## Install
 
 **Claude Code**
