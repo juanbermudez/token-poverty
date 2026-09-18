@@ -1,16 +1,23 @@
 ---
-description: Remove the Token Poverty output style and restore whatever configuration was there before.
+description: Turn the Token Poverty output style off and restore the previous one.
 ---
 
-Remove Token Poverty and put the user's previous configuration back.
+Switch the style off:
 
-Follow the `token-rich-token-poor` skill's removal procedure exactly. In particular:
+```
+${CLAUDE_PLUGIN_ROOT}/install.sh --off
+```
 
-- Read `~/.token-poverty/manifest.json` and work from what it records.
-- Delete only the text between the skill's markers. Everything else in those files stays.
-- Restore each changed key to its recorded previous value — and if it was absent before,
-  remove the key rather than writing an empty one.
-- If a file has been hand-edited since install, or a marker is missing or mismatched, stop
-  and show the user what you found. Do not delete content you did not add.
+That restores whatever `outputStyle` was set before, or removes the key if there wasn't one.
+It leaves the installed files in place, so `/i-am-token-poor` can switch back instantly.
 
-Report every path you touched and its current state.
+**If the user wants it gone entirely** — uninstalled, not just switched off — run this instead
+and report every path it reports:
+
+```
+${CLAUDE_PLUGIN_ROOT}/install.sh --uninstall
+```
+
+That removes the marked blocks from every file it recorded, deletes the files it created, and
+restores changed settings. If it reports SKIPPED for a file, that file was hand-edited since
+install — show the user and let them decide, do not clean it up yourself.

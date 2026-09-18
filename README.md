@@ -32,10 +32,27 @@ assumed, or something claimed authority it could not verify.
 
 The style activates on install. Two commands come with it:
 
-- `/i-am-token-poor` — installs the style for any agent on your machine, not just Claude
-- `/i-am-token-rich` — removes it and restores what was there before
+- `/i-am-token-poor` — switches the style on, or runs the installer for the other agents on
+  your machine after asking you what to install where
+- `/i-am-token-rich` — switches it off and restores your previous style
 
-**Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
+**Everything else** — clone and run the installer. It detects what you have, asks whether you
+want it global or per-project, asks which harnesses, shows you the plan, and writes nothing
+until you say yes:
+
+```bash
+git clone https://github.com/juanbermudez/token-rich-token-poor
+cd token-rich-token-poor && ./install.sh
+```
+
+```
+./install.sh --detect       what is installed here (tab-separated, for scripts)
+./install.sh --only a,b     limit to specific harnesses
+./install.sh --uninstall    reverse everything it did
+```
+
+It appends inside markers rather than overwriting, records every change, and refuses to touch
+a file that was hand-edited after install.
 
 **Gemini CLI**
 
@@ -108,8 +125,8 @@ Per project, use `./AGENTS.md`. `AGENTS.override.md` replaces both for that dire
 `/reload` to pick up changes without restarting.
 
 Pi also has a package installer, `pi install https://github.com/juanbermudez/token-rich-token-poor`,
-which pulls in the skill and commands — but whether a package can inject always-on context is
-undocumented, so install the file above regardless.
+but whether a package can inject always-on context is undocumented, so install the file above
+regardless.
 
 ## ChatGPT
 
