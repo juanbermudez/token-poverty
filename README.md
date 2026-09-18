@@ -11,15 +11,15 @@ It breaks silence for seven reasons: you asked, it is blocked, an action needs a
 it found a hazard, the task is done or impossible, the goal turned out to be different than
 assumed, or something claimed authority it could not verify.
 
-> **What it costs you: traces.**
+> **Tradeoff: thinner traces.**
 >
-> Terse output means thin session logs. Agent narration is noise when you are working, but it
-> is signal when you are reading a run back — those messages are where the agent's trajectory
-> shows up, and this style removes most of them. If you mine your logs, do trajectory analysis,
-> or are debugging why a run went sideways, turn it off first with `/i-am-token-rich`.
+> Agent narration is noise at runtime and signal in the trace. If you are running evals,
+> grading rollouts, or pulling trajectory data out of your session logs, you probably do not
+> want this — the intermediate messages are where the model's plan is legible, and this strips
+> most of them. Same if you are debugging a run after the fact.
 >
-> Turn it on when the budget is the constraint. That is what it is for — stretching an account
-> through a long stretch of local development.
+> `/i-am-token-rich` before an eval run. `/i-am-token-poor` when you are burning budget on
+> local dev, which is what it is for.
 
 ## Install
 
