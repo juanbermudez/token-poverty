@@ -33,6 +33,27 @@ gemini extensions install https://github.com/juanbermudez/token-rich-token-poor
 
 **Everything else** — run `/i-am-token-poor` and it handles the rest, or install by hand below.
 
+## ChatGPT
+
+There is no file or API surface — custom instructions are UI-entered only, and the desktop app
+matches web.
+
+**Global.** Settings → Personalization → Custom Instructions, and turn on *Enable
+customization*. Which file to paste depends on your character limit:
+
+| Plan | Limit | Paste |
+| --- | --- | --- |
+| Free, Go | 1,500 | `prompts/agents-compact.md` — 1,267 chars |
+| Plus, Pro, Business, Enterprise, Edu | 5,000 | `prompts/agents.md` — 2,134 chars |
+
+**Per project.** Project → ••• → Project settings → instructions. Project instructions override
+your global custom instructions, so this is the way to keep the style scoped to one body of
+work. No published character limit.
+
+**Pair it with the personality controls,** in the same Personalization panel. Set *Base style
+and tone* to **Efficient**, then turn down *Headers & Lists* and *Emojis* under
+*Characteristics*. Presets work alongside custom instructions rather than overriding them.
+
 ## By hand
 
 Download the file, then copy it where your agent reads it.
@@ -46,7 +67,6 @@ curl -O https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/mai
 | Claude Code | `~/.claude/output-styles/token-poverty.md` (use `output-styles/token-poverty.md`), then `/output-style Token Poverty` |
 | Claude Desktop | Style selector → Create custom style → paste |
 | Codex | `~/.codex/AGENTS.md` |
-| ChatGPT | Settings → Personalization → Custom instructions |
 | Cursor, OpenCode, Amp, Pi, Crush | `./AGENTS.md`, or the global equivalent |
 | Cline | `.clinerules/token-poverty.md` |
 | Roo Code | `~/.roo/rules/token-poverty.md` |
