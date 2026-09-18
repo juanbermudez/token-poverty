@@ -25,7 +25,7 @@ cd token-rich-token-poor && ./install.sh
 --uninstall   reverse everything
 ```
 
-Manual install per vendor below. `RAW` = `https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main`
+Manual install per vendor below.
 
 ---
 
@@ -36,7 +36,9 @@ Manual install per vendor below. `RAW` = `https://raw.githubusercontent.com/juan
 ```bash
 codex plugin marketplace add juanbermudez/token-rich-token-poor
 codex plugin add token-rich-token-poor@token-rich-token-poor
-curl -o ~/.codex/AGENTS.md $RAW/prompts/agents.md
+mkdir -p ~/.codex
+curl -o ~/.codex/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
 ```
 
 `~/.codex/config.toml`: `personality = "pragmatic"`, `model_verbosity = "low"`.
@@ -51,7 +53,13 @@ Set *Base style and tone* to **Efficient**.
 
 ## Nous Research
 
-**Hermes** — `curl -o ~/.hermes/SOUL.md $RAW/prompts/agents.md`
+**Hermes** — `SOUL.md` is the always-on surface.
+
+```bash
+mkdir -p ~/.hermes
+curl -o ~/.hermes/SOUL.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
 
 Switchable instead: a `token-poor` entry under `agent.personalities` in `~/.hermes/config.yaml`,
 then `/personality token-poor`.
@@ -68,15 +76,30 @@ then `/personality token-poor`.
 ```
 
 Activates on install. `/i-am-token-poor` switches on or runs the installer; `/i-am-token-rich`
-switches off. Manual: `curl -o ~/.claude/output-styles/token-poverty.md $RAW/output-styles/token-poverty.md`,
-then `/output-style Token Poverty`. Pair with `effort: low`.
+switches off.
+
+Manually instead:
+
+```bash
+mkdir -p ~/.claude/output-styles
+curl -o ~/.claude/output-styles/token-poverty.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/output-styles/token-poverty.md
+```
+
+Then `/output-style Token Poverty`. Pair with `effort: low`.
 
 **Claude Desktop** — Styles, not output styles. Style selector → Create custom style → describe
 it in your own words → paste `prompts/agents.md`.
 
 ## xAI
 
-**Grok Build** — `curl -o ~/.grok/AGENTS.md $RAW/prompts/agents.md`
+**Grok Build**
+
+```bash
+mkdir -p ~/.grok
+curl -o ~/.grok/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
 
 Reads `~/.grok/` then repo root down to cwd, deeper wins. Also picks up `CLAUDE.md` and
 `.cursor/rules/`, so it may already see a style you installed elsewhere. `grok inspect` shows
@@ -87,23 +110,35 @@ publishes no docs for it.
 
 ## Pi
 
-`curl -o ~/.pi/agent/AGENTS.md $RAW/prompts/agents.md`
+```bash
+mkdir -p ~/.pi/agent
+curl -o ~/.pi/agent/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
 
 Per project `./AGENTS.md`; `AGENTS.override.md` replaces both. `/reload` to apply.
 
 ## Prime Intellect
 
-**Prime Agent** — `curl -o ~/.prime/agent/APPEND_SYSTEM.md $RAW/prompts/agents.md`
+**Prime Agent**
+
+```bash
+mkdir -p ~/.prime/agent
+curl -o ~/.prime/agent/APPEND_SYSTEM.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
+```
 
 > Not `SYSTEM.md` at that path — it replaces the system prompt wholesale.
 
 ## Vercel
 
 **fx** ([vercel-labs/fx](https://github.com/vercel-labs/fx)) — a tiny native coding agent.
-Install `curl -fsSL https://fx.sh/setup.sh | bash`, then:
 
 ```bash
-curl -o ~/.fx/AGENTS.md $RAW/prompts/agents.md
+curl -fsSL https://fx.sh/setup.sh | bash
+mkdir -p ~/.fx
+curl -o ~/.fx/AGENTS.md \
+  https://raw.githubusercontent.com/juanbermudez/token-rich-token-poor/main/prompts/agents.md
 ```
 
 Precedence is direct request → `~/.fx/AGENTS.md` → workspace `AGENTS.md` → nearest
@@ -113,8 +148,13 @@ Precedence is direct request → `~/.fx/AGENTS.md` → workspace `AGENTS.md` →
 **eve** ([vercel/eve](https://github.com/vercel/eve)) is a framework for building durable
 agents, not a CLI you install a style into. An eve agent is a directory on disk where
 instructions and tools are files, so the style goes in your agent's instructions and ships with
-the project. `npx eve init my-agent`, then check `node_modules/eve/docs/` for the layout your
-version uses.
+the project.
+
+```bash
+npx eve init my-agent
+```
+
+Check `node_modules/eve/docs/` for the layout your version uses.
 
 ## DeepSeek
 
@@ -154,9 +194,13 @@ No local file. In `~/.config/opencode/opencode.json` or `opencode.json`:
 
 ## Google
 
-**Gemini CLI** — `gemini extensions install https://github.com/juanbermudez/token-rich-token-poor`
+**Gemini CLI**
 
-Or `~/.gemini/GEMINI.md`.
+```bash
+gemini extensions install https://github.com/juanbermudez/token-rich-token-poor
+```
+
+Or by hand at `~/.gemini/GEMINI.md`.
 
 ---
 
